@@ -3,10 +3,6 @@ const apiBaseUrl =
     ? "http://localhost:3000"
     : "https://flstkdn-blogs.ue.r.appspot.com";
 
-fetch(`${apiBaseUrl}/blog`)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
-
 //on load, get the typewriter effect going
 window.onload = function () {
   setTimeout(function () {
