@@ -1,0 +1,147 @@
+.scroll-down {
+  position: relative;
+  top: 2px;
+  transition: 0.2s;
+}
+
+.scroll-down:hover {
+  top: 4px;
+}
+
+/* .bottom-cell {
+    grid-column: 1 / span 2;
+    text-align: center;
+} */
+
+#banner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+#banner h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+#banner h2:first-of-type {
+  opacity: 0;
+  transform: translateY(5px);
+  animation: fadeInSlide 1s ease-in-out 4.5s forwards;
+}
+#banner h2:nth-of-type(2) {
+  opacity: 0;
+  transform: translateY(5px);
+  animation: fadeInSlide 1s ease-in-out 6.5s forwards;
+}
+
+#banner div {
+  opacity: 0;
+  transform: translateY(5px);
+  animation: fadeInSlide 1s ease-in-out 8.5s forwards;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cursor {
+  position: relative;
+  bottom: -1px;
+  display: inline-block;
+  width: 5px;
+  height: 45px;
+  margin-left: 5px;
+  background-color: #0f356a;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.blog-post {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  /* padding: 16px; */
+  border-color: #0f356a;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width: 2px;
+}
+
+.blog-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blog-info h1 {
+  font-size: 48px;
+  font-family: "Space Mono Bold", Arial, sans-serif;
+
+  padding: 16px;
+  padding-bottom: 0px;
+
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.blog-info h1 a {
+  text-decoration: none;
+}
+
+.blog-info h1:hover {
+  bottom: 2px;
+  left: 2px;
+}
+
+.blog-number {
+  font-size: 48px;
+  font-family: "Space Mono Bold", Arial, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-color: #0f356a;
+  border-left-style: solid;
+  border-width: 2px;
+
+  padding: 16px;
+}
+
+.blog-extra-info {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-top: 0px;
+}
+
+#blog-posts {
+  opacity: 0;
+  transform: translateY(5px);
+  animation: fadeInSlide 1s ease-in-out 8.5s forwards;
+}

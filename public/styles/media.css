@@ -1,0 +1,29 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #09203f;
+    color: #ff7746;
+  }
+
+  nav,
+  footer {
+    background-color: #09203f;
+  }
+
+  a {
+    color: #ff7746;
+  }
+  .icon {
+    fill: #ff7746;
+  }
+  .cursor {
+    background-color: #ff7746;
+  }
+
+  .blog-post {
+    border-color: #ff7746;
+  }
+
+  .blog-number {
+    border-color: #ff7746;
+  }
+}

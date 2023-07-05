@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "Space Mono";
+  src: url("../resources/fonts/Space_Mono/SpaceMono-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Space Mono Bold";
+  src: url("../resources/fonts/Space_Mono/SpaceMono-Bold.ttf");
+}
+
+body {
+  background-color: #ff7746;
+  color: #0f356a;
+  font-family: "Space Mono", Arial, sans-serif;
+  font-size: 24px;
+
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  height: 100%;
+}
+
+nav {
+  background-color: #ff7746;
+  overflow: hidden;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px;
+}
+
+.text-logo {
+  font-family: "Space Mono Bold", Arial, sans-serif;
+  font-style: italic;
+  font-size: 32px;
+  letter-spacing: -2.5px;
+
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.text-logo:hover {
+  bottom: 2px;
+  left: 2px;
+}
+
+#nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+}
+
+a {
+  color: #0f356a;
+}
+svg a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: #ff7746;
+  text-align: center;
+  padding: 16px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr) auto;
+  grid-gap: 4px;
+}
+
+.footer-grid > div {
+  padding: 4px;
+  font-size: 24px;
+  /* text-align: center; */
+}
+
+.footer-grid > div:nth-child(odd) {
+  text-align: left;
+}
+
+.footer-grid > div:nth-child(even) {
+  text-align: right;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  fill: #0f356a;
+
+  cursor: pointer;
+
+  text-decoration: none;
+}
+
+.link {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  /* transition: 0.2s; */
+}
+
+.link:hover {
+  bottom: -2px;
+  right: -2px;
+}
