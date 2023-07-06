@@ -1,7 +1,7 @@
 const apiBaseUrl =
   location.hostname === "localhost"
     ? "http://localhost:3000"
-    : "https://flstkdn-blogs.ue.r.appspot.com";
+    : "https://fullstackdan-dev.onrender.com";
 
 //on load, get the typewriter effect going
 window.onload = function () {
@@ -22,6 +22,11 @@ window.onload = function () {
     }
   }, 2000);
 };
+
+// fetch("http://localhost:5000/api")
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error("Error:", error));
 
 //find the element with the blog-posts id
 const blogPosts = document.querySelector("#blog-posts");

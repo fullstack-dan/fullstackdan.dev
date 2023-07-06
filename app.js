@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
   res.send("<a href='https://fullstackdan.dev'>Blog</a>");
 });
 
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
+
 const port = process.env.PORT || 3000;
 
 const mysql = require("mysql2");

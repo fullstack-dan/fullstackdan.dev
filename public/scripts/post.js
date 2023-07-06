@@ -1,7 +1,7 @@
 const apiBaseUrl =
   location.hostname === "localhost"
     ? "http://localhost:3000"
-    : "https://flstkdn-blogs.ue.r.appspot.com";
+    : "https://fullstackdan-dev.onrender.com";
 
 fetch(`${apiBaseUrl}/blog`)
   .then((response) => response.json())
