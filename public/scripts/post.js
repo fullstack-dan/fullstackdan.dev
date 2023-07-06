@@ -26,6 +26,9 @@ window.onload = function () {
 };
 
 function generatePostHTML(post) {
+  // Replace newline characters with <br> tags
+  const body = post.body.replace(/\n/g, "<br>");
+
   return `
     <div id="post-title">
       <h1>${post.title}</h1>
@@ -36,7 +39,7 @@ function generatePostHTML(post) {
       <div id="post-date">${post.created_at.slice(0, 10)}</div>
     </div>
     <div id="post-content">
-      ${post.body}
+      ${body}
     </div>
   `;
 }
