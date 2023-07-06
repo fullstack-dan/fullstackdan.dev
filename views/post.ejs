@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <link rel="stylesheet" href="styles/post.css" />
-    <link rel="stylesheet" href="styles/media.css" />
-    <link rel="icon" href="robot.png" />
-    <script src="scripts/global.js" defer></script>
-    <script src="scripts/post.js" defer></script>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/post.css" />
+    <link rel="stylesheet" href="/styles/media.css" />
+    <!-- <link rel="icon" href="robot.png" /> -->
+    <script src="/scripts/global.js" defer></script>
+    <!-- <script src="/scripts/post.js" defer></script> -->
     <title>FLSTKDN_</title>
   </head>
 
@@ -26,13 +26,13 @@
     <main>
       <div id="post-title">
         <h1><%= post.title %></h1>
-        <h1><%= post.id %></h1>
+        <h1>[<%= String(post.id).padStart(2, '0') %>]</h1>
       </div>
       <div id="post-info">
         <div id="post-author"><%= post.author %></div>
-        <div id="post-date"><%= post.created_at %></div>
+        <div id="post-date"><%= post.formatted_date %></div>
       </div>
-      <div id="post-content"><%= post.body %>></div>
+      <div id="post-content"><%- post.body %>></div>
     </main>
     <footer>
       <div class="footer-grid">
