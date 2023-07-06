@@ -31,7 +31,7 @@ connection.connect((err) => {
   console.log("Connected to the database!");
 });
 
-app.get("/blog", (req, res) => {
+app.get("/posts", (req, res) => {
   connection.query("SELECT * FROM posts", (error, results) => {
     if (error) throw error;
     res.json(results);
