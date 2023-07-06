@@ -89,6 +89,7 @@ function createBlogPost(post) {
 fetch(`${apiBaseUrl}/blog`)
   .then((response) => response.json())
   .then((posts) => {
+    posts.reverse();
     for (let i = 0; i < posts.length; i++) {
       blogPosts.appendChild(createBlogPost(posts[i]));
     }
