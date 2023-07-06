@@ -1,3 +1,8 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 main {
   padding: 16px;
   height: 100%;
@@ -27,4 +32,8 @@ main {
 #post-title h1:first-of-type:hover {
   bottom: 2px;
   left: 2px;
+}
+
+#post-content {
+  overflow-y: auto;
 }
