@@ -74,7 +74,7 @@ function createBlogPost(post) {
   return blogPost;
 }
 
-fetch(`${apiBaseUrl}/blog`)
+fetch(`${apiBaseUrl}/posts`)
   .then((response) => response.json())
   .then((posts) => {
     posts.reverse();
