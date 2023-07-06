@@ -4,8 +4,6 @@ const app = express();
 require("dotenv").config();
 
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send("<a href='https://fullstackdan.dev'>Blog</a>");
