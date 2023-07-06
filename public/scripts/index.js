@@ -79,7 +79,8 @@ function createBlogPost(post) {
   blogNumber.textContent = `[${id.toString().padStart(2, "0")}]`;
   blogPost.appendChild(blogNumber);
 
-  if (id !== 0) {
+  //if the blogPosts element has any children, do not render a top border. Manipulate the style ditrectly
+  if (blogPosts.children.length > 0) {
     blogPost.style.borderTop = "none";
   }
 
