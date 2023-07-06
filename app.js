@@ -4,15 +4,13 @@ const app = express();
 require("dotenv").config();
 
 app.use(cors());
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.send("<a href='https://fullstackdan.dev'>Blog</a>");
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 const mysql = require("mysql2");
 
@@ -48,3 +46,6 @@ app.get("/blog/:id", (req, res) => {
 });
 
 app.use(express.static("public"));
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
