@@ -27,3 +27,16 @@
     border-color: #ff7746;
   }
 }
+
+@media (max-width: 768px) {
+  #nav-links {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr) auto;
+  }
+}
