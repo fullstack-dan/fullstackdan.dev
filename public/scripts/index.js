@@ -3,7 +3,6 @@ const apiBaseUrl =
     ? "http://localhost:3000"
     : "https://fullstackdan-dev.onrender.com";
 
-//on load, get the typewriter effect going
 window.onload = function () {
   setTimeout(function () {
     var typewriter = document.querySelector(".typewriter");
@@ -23,12 +22,6 @@ window.onload = function () {
   }, 2000);
 };
 
-// fetch("http://localhost:5000/api")
-//   .then((response) => response.json())
-//   .then((data) => console.log(data))
-//   .catch((error) => console.error("Error:", error));
-
-//find the element with the blog-posts id
 const blogPosts = document.querySelector("#blog-posts");
 
 function createBlogPost(post) {
@@ -79,7 +72,6 @@ function createBlogPost(post) {
   blogNumber.textContent = `[${id.toString().padStart(2, "0")}]`;
   blogPost.appendChild(blogNumber);
 
-  //if the blogPosts element has any children, do not render a top border. Manipulate the style ditrectly
   if (blogPosts.children.length > 0) {
     blogPost.style.borderTop = "none";
   }
@@ -97,7 +89,6 @@ fetch(`${apiBaseUrl}/blog`)
   })
   .catch((error) => console.error(error));
 
-//create a function that updates the local storage with the post id
 function updateLocalStorage(postId) {
   localStorage.setItem("postId", postId);
 }
