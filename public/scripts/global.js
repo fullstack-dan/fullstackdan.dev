@@ -1,11 +1,4 @@
-document.querySelectorAll(".text-logo").forEach((item) => {
-  item.style.cursor = "pointer";
-  item.addEventListener("click", (event) => {
-    window.location.href = "https://fullstackdan.dev";
-  });
-});
-
-let footer = document.querySelector("footer"); // replace with your footer selector if different
+let footer = document.querySelector("footer");
 
 let content = `
 <div class="footer-grid">
@@ -60,3 +53,23 @@ let content = `
 `;
 
 footer.innerHTML = content;
+
+let navbar = document.querySelector("nav"); // replace with your navbar selector if different
+
+let navbarContent = `
+<h1 class="text-logo">FLSTKDN_</h1>
+<ul class="nav-links">
+  <li class="link"><a href="">blogs</a></li>
+  <li class="link"><a href="">about</a></li>
+  <li class="link"><a href="">contact</a></li>
+</ul>
+`;
+
+navbar.innerHTML = navbarContent;
+
+document.querySelectorAll(".text-logo").forEach((item) => {
+  item.style.cursor = "pointer";
+  item.addEventListener("click", (event) => {
+    window.location.href = "https://fullstackdan.dev";
+  });
+});
