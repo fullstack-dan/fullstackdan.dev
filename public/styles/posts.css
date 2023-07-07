@@ -12,6 +12,8 @@ main h1:first-child {
   position: relative;
   bottom: 0;
   left: 0;
+
+  text-align: center;
 }
 
 main h1:first-child:hover {
@@ -22,6 +24,7 @@ main h1:first-child:hover {
 #blog-posts {
   display: flex;
   flex-direction: column;
+  padding-bottom: 0rem;
 }
 
 .blog-post {
@@ -83,4 +86,50 @@ main h1:first-child:hover {
   flex-direction: column;
   padding: 1rem;
   padding-top: 0;
+}
+
+#page-btns {
+  display: flex;
+  justify-content: space-between;
+  display: none;
+}
+
+.pagination {
+  all: unset;
+
+  background-color: #ff7746;
+  color: #0f356a;
+
+  border-style: solid;
+  border-top-style: none;
+  border-width: 0.125rem;
+  border-color: #0f356a;
+
+  width: 100%;
+  padding: 16px;
+
+  text-align: center;
+}
+
+#prev-page {
+  border-left-style: none;
+  border-right-style: none;
+}
+
+#next-page {
+  border-right-style: none;
+}
+
+.pagination:hover {
+  cursor: pointer;
+  background-color: #fa6f3c;
+}
+
+.pagination:active {
+  background-color: #e65e2e;
+}
+
+.pagination:disabled {
+  background-color: #fa6f3c;
+  cursor: not-allowed;
 }

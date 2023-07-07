@@ -84,10 +84,20 @@ function displayPosts(page) {
   for (let i = 0; i < postsForPage.length; i++) {
     blogPosts.appendChild(createBlogPost(postsForPage[i]));
   }
+  document.querySelector("#page-btns").style.display = "flex";
 
   // Disable 'Next' button if there are no more posts
   if (end >= allPosts.length) {
     document.querySelector("#next-page").disabled = true;
+  } else {
+    document.querySelector("#next-page").disabled = false;
+  }
+
+  // Disable 'Prev' button if there are no previous posts
+  if (start === 0) {
+    document.querySelector("#prev-page").disabled = true;
+  } else {
+    document.querySelector("#prev-page").disabled = false;
   }
 }
 
@@ -98,4 +108,12 @@ loadPosts(currentPage);
 document.querySelector("#next-page").addEventListener("click", () => {
   currentPage++;
   loadPosts(currentPage);
+});
+
+// Handle click on previous page button
+document.querySelector("#prev-page").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    loadPosts(currentPage);
+  }
 });

@@ -85,4 +85,23 @@
   .nav-links > li {
     border-color: #ff7746;
   }
+
+  .pagination {
+    background-color: #09203f;
+    color: #ff7746;
+    border-color: #ff7746;
+  }
+
+  .pagination:hover {
+    background-color: #061c38;
+  }
+
+  .pagination:active {
+    background-color: rgb(4, 26, 53);
+  }
+
+  .pagination:disabled {
+    background-color: #061c38;
+    cursor: not-allowed;
+  }
 }

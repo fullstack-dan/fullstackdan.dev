@@ -1,15 +1,21 @@
 main {
   padding: 1rem;
-  height: 100%;
+  height: fit-content;
 
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  padding-top: 2rem;
+}
+
+#post-content {
+  height: 100%;
 }
 
 #post-title {
   font-family: "Space Mono Bold", Arial, sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   letter-spacing: -0.156rem;
   text-align: center;
 
@@ -27,8 +33,4 @@ main {
 #post-title h1:first-of-type:hover {
   bottom: 0.125rem;
   left: 0.125rem;
-}
-
-#post-content {
-  overflow-y: auto;
 }

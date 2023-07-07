@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/posts.css" />
     <link rel="stylesheet" href="styles/media.css" />
     <link rel="icon" href="robot.png" />
+    <script src="scripts/global.js" defer></script>
     <script src="scripts/posts.js" defer></script>
     <title>FLSTKDN_</title>
   </head>
@@ -16,9 +17,14 @@
   <body>
     <nav></nav>
     <main>
-      <h1>blog posts:</h1>
-      <div id="blog-posts"></div>
-      <button id="next-page">Next</button>
+      <h1>blog posts</h1>
+      <div>
+        <div id="blog-posts"></div>
+        <div id="page-btns">
+          <button class="pagination" id="prev-page">Previous</button>
+          <button class="pagination" id="next-page">Next</button>
+        </div>
+      </div>
     </main>
     <footer></footer>
   </body>
