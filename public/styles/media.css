@@ -28,15 +28,27 @@
   }
 }
 
-@media (max-width: 768px) {
-  #nav-links {
-    flex-direction: column;
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 80%;
   }
-}
-
-@media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr) auto;
+  }
+
+  .footer-grid > div:nth-child(odd) {
+    text-align: center;
+  }
+  .footer-grid > div:nth-child(even) {
+    text-align: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
   }
 }

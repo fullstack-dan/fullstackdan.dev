@@ -8,11 +8,15 @@
   src: url("../resources/fonts/Space_Mono/SpaceMono-Bold.ttf");
 }
 
+html {
+  font-size: 100%;
+}
+
 body {
   background-color: #ff7746;
   color: #0f356a;
   font-family: "Space Mono", Arial, sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
 
   height: 100vh;
   overflow-x: hidden;
@@ -25,21 +29,21 @@ main {
 nav {
   background-color: #ff7746;
   overflow: hidden;
-  height: 50px;
+  height: 3.125rem;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  padding: 16px;
+  padding: 1rem;
 }
 
 .text-logo {
   font-family: "Space Mono Bold", Arial, sans-serif;
   font-style: italic;
-  font-size: 32px;
-  letter-spacing: -2.5px;
+  font-size: 2rem;
+  letter-spacing: -0.156rem;
 
   position: relative;
   bottom: 0;
@@ -47,22 +51,38 @@ nav {
 }
 
 .text-logo:hover {
-  bottom: 2px;
-  left: 2px;
+  bottom: 0.125rem;
+  left: 0.125rem;
 }
 
-#nav-links {
+.nav-links {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  gap: 16px;
+  gap: 1rem;
+}
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.hamburger-menu div {
+  width: 2rem;
+  height: 0.156rem;
+  background: #333;
 }
 
 a {
   color: #0f356a;
 }
+
 svg a {
   text-decoration: none;
 }
@@ -70,20 +90,19 @@ svg a {
 footer {
   background-color: #ff7746;
   text-align: center;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr) auto;
-  grid-gap: 4px;
+  grid-gap: 0.25rem;
 }
 
 .footer-grid > div {
-  padding: 4px;
-  font-size: 24px;
-  /* text-align: center; */
+  padding: 0.25rem;
+  font-size: 1.5rem;
 }
 
 .footer-grid > div:nth-child(odd) {
@@ -95,8 +114,8 @@ footer {
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   fill: #0f356a;
 
   cursor: pointer;
@@ -109,10 +128,71 @@ footer {
   bottom: 0;
   right: 0;
   cursor: pointer;
-  /* transition: 0.2s; */
 }
 
 .link:hover {
-  bottom: -2px;
-  right: -2px;
+  bottom: -0.125rem;
+  right: -0.125rem;
+}
+
+.blog-post {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+
+  border-color: #0f356a;
+  border-top-width: 0.063rem;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width: 0.125rem;
+}
+
+.blog-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-info h1 {
+  font-size: 3rem;
+  font-family: "Space Mono Bold", Arial, sans-serif;
+
+  padding: 1rem;
+  padding-bottom: 0;
+
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.blog-info h1 a {
+  text-decoration: none;
+}
+
+.blog-info h1:hover {
+  bottom: 0.125rem;
+  left: 0.125rem;
+}
+
+.blog-number {
+  font-size: 3rem;
+  font-family: "Space Mono Bold", Arial, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-color: #0f356a;
+  border-left-style: solid;
+  border-width: 0.125rem;
+
+  padding: 1rem;
+}
+
+.blog-extra-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-top: 0;
 }
