@@ -1,55 +1,53 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 main h1:first-child {
-  font-size: 48px;
+  font-size: 3rem;
   font-family: "Space Mono Bold", Arial, sans-serif;
-  padding: 16px;
-  padding-bottom: 0px;
+  padding: 1rem;
+  padding-bottom: 0;
   position: relative;
   bottom: 0;
   left: 0;
 }
 
 main h1:first-child:hover {
-  bottom: 2px;
-  left: 2px;
+  bottom: 0.125rem;
+  left: 0.125rem;
 }
 
 #blog-posts {
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
 }
 
 .blog-post {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 16px;
-  /* padding: 16px; */
+  gap: 1rem;
   border-color: #0f356a;
-  border-top-width: 1px;
+  border-top-width: 0.063rem;
   border-top-style: solid;
   border-bottom-style: solid;
-  border-width: 2px;
+  border-width: 0.125rem;
 }
 
 .blog-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .blog-info h1 {
-  font-size: 48px;
+  font-size: 3rem;
   font-family: "Space Mono Bold", Arial, sans-serif;
 
-  padding: 16px;
-  padding-bottom: 0px;
+  padding: 1rem;
+  padding-bottom: 0;
 
   position: relative;
   bottom: 0;
@@ -61,12 +59,12 @@ main h1:first-child:hover {
 }
 
 .blog-info h1:hover {
-  bottom: 2px;
-  left: 2px;
+  bottom: 0.125rem;
+  left: 0.125rem;
 }
 
 .blog-number {
-  font-size: 48px;
+  font-size: 3rem;
   font-family: "Space Mono Bold", Arial, sans-serif;
 
   display: flex;
@@ -75,14 +73,14 @@ main h1:first-child:hover {
 
   border-color: #0f356a;
   border-left-style: solid;
-  border-width: 2px;
+  border-width: 0.125rem;
 
-  padding: 16px;
+  padding: 1rem;
 }
 
 .blog-extra-info {
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  padding-top: 0px;
+  padding: 1rem;
+  padding-top: 0;
 }
