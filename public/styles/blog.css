@@ -8,7 +8,7 @@ main h1:first-child {
   font-size: 3rem;
   font-family: "Space Mono Bold", Arial, sans-serif;
   padding: 1rem;
-  padding-bottom: 0;
+  padding-bottom: 1rem;
   position: relative;
   bottom: 0;
   left: 0;
