@@ -50,6 +50,18 @@
   }
 }
 
+@media only screen and (max-width: 360px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media only screen and (max-width: 260px) {
+  html {
+    font-size: 40%;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #09203f;

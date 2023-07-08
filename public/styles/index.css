@@ -1,53 +1,43 @@
 .scroll-down {
   position: relative;
-  top: 2px;
+  top: 0.125rem;
   transition: 0.2s;
 }
 
 .scroll-down:hover {
-  top: 4px;
+  top: 0.25rem;
 }
-
-/* .bottom-cell {
-    grid-column: 1 / span 2;
-    text-align: center;
-} */
 
 #banner {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px;
+  gap: 1rem;
+  padding: 1rem;
   text-align: center;
 }
 
 #banner h1 {
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 #banner h2:first-of-type {
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(0.3125rem);
   animation: fadeInSlide 1s ease-in-out 4.5s forwards;
 }
-/* #banner h2:nth-of-type(2) {
-  opacity: 0;
-  transform: translateY(5px);
-  animation: fadeInSlide 1s ease-in-out 6.5s forwards;
-} */
 
 #banner div {
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(0.3125rem);
   animation: fadeInSlide 1s ease-in-out 6.5s forwards;
 }
 
 @keyframes fadeInSlide {
   0% {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(0.3125rem);
   }
 
   100% {
@@ -58,11 +48,11 @@
 
 .cursor {
   position: relative;
-  bottom: -1px;
+  bottom: -0.0625rem;
   display: inline-block;
-  width: 5px;
-  height: 45px;
-  margin-left: 5px;
+  width: 0.3125rem;
+  height: 2.8125rem;
+  margin-left: 0.3125rem;
   background-color: #0f356a;
   animation: blink 1s infinite;
 }
@@ -80,6 +70,6 @@
 
 #blog-posts {
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(0.3125rem);
   animation: fadeInSlide 1s ease-in-out 8.5s forwards;
 }
