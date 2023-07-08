@@ -60,10 +60,11 @@ let navbarContent = `
 <h1 class="text-logo">FLSTKDN_</h1>
 <ul class="nav-links">
   <li class="link"><a href="https://blog.fullstackdan.dev">blog</a></li>
-  <li class="link"><a href="">about</a></li>
-  <li class="link"><a href="">contact</a></li>
 </ul>
 `;
+
+//  <li class="link"><a href="">about</a></li>
+//  <li class="link"><a href="">contact</a></li>
 
 navbar.innerHTML = navbarContent;
 

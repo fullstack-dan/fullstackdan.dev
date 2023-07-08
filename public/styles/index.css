@@ -32,16 +32,16 @@
   transform: translateY(5px);
   animation: fadeInSlide 1s ease-in-out 4.5s forwards;
 }
-#banner h2:nth-of-type(2) {
+/* #banner h2:nth-of-type(2) {
   opacity: 0;
   transform: translateY(5px);
   animation: fadeInSlide 1s ease-in-out 6.5s forwards;
-}
+} */
 
 #banner div {
   opacity: 0;
   transform: translateY(5px);
-  animation: fadeInSlide 1s ease-in-out 8.5s forwards;
+  animation: fadeInSlide 1s ease-in-out 6.5s forwards;
 }
 
 @keyframes fadeInSlide {
