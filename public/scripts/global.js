@@ -54,12 +54,12 @@ let content = `
 
 footer.innerHTML = content;
 
-let navbar = document.querySelector("nav"); // replace with your navbar selector if different
+let navbar = document.querySelector("nav");
 
 let navbarContent = `
 <h1 class="text-logo">FLSTKDN_</h1>
 <ul class="nav-links">
-  <li class="link"><a href="">blogs</a></li>
+  <li class="link"><a href="https://blog.fullstackdan.dev">blog</a></li>
   <li class="link"><a href="">about</a></li>
   <li class="link"><a href="">contact</a></li>
 </ul>

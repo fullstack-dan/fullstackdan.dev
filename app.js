@@ -8,7 +8,7 @@ app.use(cors());
 app.options("*", cors());
 
 app.get("/", (req, res) => {
-  res.send("<a href='https://fullstackdan.dev'>Blog</a>");
+  res.render("blog");
 });
 
 app.get("/api", (req, res) => {

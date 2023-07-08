@@ -42,10 +42,13 @@ main h1:first-child:hover {
 .blog-info {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
 }
 
 .blog-info h1 {
+  text-align: left;
+
   font-size: 3rem;
   font-family: "Space Mono Bold", Arial, sans-serif;
 
@@ -58,6 +61,7 @@ main h1:first-child:hover {
 }
 
 .blog-info h1 a {
+  text-align: left;
   text-decoration: none;
 }
 
