@@ -69,6 +69,7 @@
 }
 
 #blog-posts {
+  height: 100%;
   opacity: 0;
   transform: translateY(0.3125rem);
   animation: fadeInSlide 1s ease-in-out 8.5s forwards;
