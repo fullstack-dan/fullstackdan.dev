@@ -28,6 +28,7 @@ main h1:first-child:hover {
 }
 
 .blog-post {
+  text-align: left;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -42,11 +43,14 @@ main h1:first-child:hover {
 .blog-info {
   display: flex;
   flex-direction: column;
+  text-align: left;
   align-items: flex-start;
   gap: 1rem;
 }
 
 .blog-info h1 {
+  display: flex;
+  justify-content: flex-start;
   text-align: left;
 
   font-size: 3rem;
