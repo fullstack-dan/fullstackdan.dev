@@ -26,6 +26,21 @@ main {
   height: fit-content;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto; /* This will allow the main content to grow and shrink as needed */
+}
+
+nav,
+footer {
+  flex-shrink: 0; /* This will prevent nav and footer from shrinking */
+}
+
 nav {
   background-color: #ff7746;
   overflow: hidden;
@@ -121,11 +136,11 @@ footer {
 }
 
 .blog-post {
+  text-align: left;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
-
   border-color: #0f356a;
   border-top-width: 0.063rem;
   border-top-style: solid;
@@ -136,10 +151,16 @@ footer {
 .blog-info {
   display: flex;
   flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
   gap: 1rem;
 }
 
 .blog-info h1 {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+
   font-size: 3rem;
   font-family: "Space Mono Bold", Arial, sans-serif;
 
@@ -152,6 +173,7 @@ footer {
 }
 
 .blog-info h1 a {
+  text-align: left;
   text-decoration: none;
 }
 

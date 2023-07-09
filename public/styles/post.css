@@ -1,6 +1,6 @@
 main {
   padding: 1rem;
-  height: fit-content;
+  /* height: max(100%, max-content); */
 
   display: flex;
   flex-direction: column;
