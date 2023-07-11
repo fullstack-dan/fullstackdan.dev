@@ -61,7 +61,7 @@ function createBlogPost(post) {
 
 function loadPosts(page) {
   if (allPosts.length === 0) {
-    fetch(`${apiBaseUrl}/posts`)
+    fetch(`${apiBaseUrl}/api/posts`)
       .then((response) => response.json())
       .then((posts) => {
         allPosts = posts.reverse();
