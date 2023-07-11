@@ -2,10 +2,26 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
-app.set("view engine", "ejs"); // Set up EJS for templates
+app.set("view engine", "ejs");
 
-app.use(cors());
-app.options("*", cors());
+var corsOptions = {
+  origin: function (origin, callback) {
+    var allowedOrigins = [
+      "http://localhost:3000",
+      "https://fullstackdan.dev",
+      "https://blog.fullstackdan.dev",
+      "https://fullstackdan-dev.onrender.com",
+    ];
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.render("blog");
