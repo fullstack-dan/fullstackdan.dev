@@ -74,12 +74,26 @@ function createBlogPost(post) {
   return blogPost;
 }
 
-fetch(`${apiBaseUrl}/posts`)
+var postsLoaded = false;
+
+fetch(`${apiBaseUrl}/api/posts`)
   .then((response) => response.json())
   .then((posts) => {
+    document.querySelector("#posts-loading").remove();
     posts.reverse();
     for (let i = 0; i < posts.length; i++) {
       blogPosts.appendChild(createBlogPost(posts[i]));
     }
+    postsLoaded = true;
   })
-  .catch((error) => console.error(error));
+  .catch((error) => {
+    document.querySelector("#posts-loading").textContent =
+      "posts aren't loading right now, sorry! please try again later.";
+  });
+
+if (!postsLoaded) {
+  let postsLoading = document.createElement("div");
+  postsLoading.id = "posts-loading";
+  postsLoading.textContent = "posts are loading...";
+  blogPosts.appendChild(postsLoading);
+}
