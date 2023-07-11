@@ -8,6 +8,8 @@ var corsOptions = {
   origin: function (origin, callback) {
     var allowedOrigins = [
       "http://localhost:3000",
+      "http://localhost:5000",
+      "http://localhost",
       "https://fullstackdan.dev",
       "https://blog.fullstackdan.dev",
       "https://fullstackdan-dev.onrender.com",
