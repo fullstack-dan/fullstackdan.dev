@@ -3,7 +3,7 @@ const apiBaseUrl =
     ? "http://localhost:3000"
     : "https://fullstackdan-dev.onrender.com";
 
-import { createBlogPost } from "./global.js";
+import { createBlogPost, populateTags } from "./global.js";
 
 window.onload = function () {
   setTimeout(function () {
@@ -27,30 +27,6 @@ window.onload = function () {
 const postTagsMap = new Map();
 
 const blogPosts = document.querySelector("#blog-posts");
-
-function populateTags() {
-  for (let i = 0; i < blogPosts.children.length; i++) {
-    const blogPost = blogPosts.children[i];
-    const blogTags = blogPost.querySelector(".blog-tags");
-    const postId = blogPost.querySelector("h1").dataset.postId;
-
-    const postTagsArr = postTagsMap.get(parseInt(postId));
-
-    for (let j = 0; j < postTagsArr.length; j++) {
-      const tag = document.createElement("a");
-      tag.href = `https://blog.fullstackdan.dev/tags/${postTagsArr[j].tag_id}`;
-      tag.classList.add("blog-tag");
-      tag.classList.add("link");
-      tag.textContent = postTagsArr[j].tag_name;
-
-      if (j < postTagsArr.length - 1) {
-        tag.textContent += ", ";
-      }
-
-      blogTags.appendChild(tag);
-    }
-  }
-}
 
 Promise.all([
   fetch(`${apiBaseUrl}/api/post-tags`)
@@ -94,7 +70,7 @@ Promise.all([
         "posts aren't loading right now, sorry! please try again later.";
     }),
 ]).then(() => {
-  populateTags();
+  populateTags(postTagsMap, blogPosts);
 });
 
 let postsLoading = document.createElement("div");

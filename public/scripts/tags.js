@@ -3,10 +3,10 @@ const apiBaseUrl =
     ? "http://localhost:3000"
     : "https://fullstackdan-dev.onrender.com";
 
-import { createBlogPost } from "./global.js";
+import { createBlogPost, populateTags } from "./global.js";
 
 let posts = [];
-let postTagMap = new Map();
+let postTagsMap = new Map();
 
 window.onload = function () {
   Promise.all([fetchTagsAndPopulate(), fetchPosts(), fetchPostTags()])
@@ -50,17 +50,18 @@ function displayPostsForTag(tagID) {
   blogPosts.innerHTML = "";
 
   if (tagID === 0) {
-    posts
-      .reverse()
-      .forEach((post) => blogPosts.appendChild(createBlogPost(post)));
+    const reversePosts = posts.reverse();
+    reversePosts.forEach((post) => blogPosts.appendChild(createBlogPost(post)));
+    populateTags(postTagsMap, blogPosts);
     return;
   }
 
   var taggedPosts = [];
 
-  for (let postId of postTagMap.keys()) {
-    let tagIds = postTagMap.get(postId);
-    if (tagIds.includes(parseInt(tagID))) {
+  for (let postId of postTagsMap.keys()) {
+    let tagObjects = postTagsMap.get(postId);
+
+    if (tagObjects.some((tagObj) => tagObj.tag_id === parseInt(tagID))) {
       let post = posts.find((post) => post.id === postId);
       if (post) {
         taggedPosts.push(post);
@@ -71,6 +72,8 @@ function displayPostsForTag(tagID) {
   taggedPosts
     .reverse()
     .forEach((post) => blogPosts.appendChild(createBlogPost(post)));
+
+  populateTags(postTagsMap, blogPosts);
 }
 
 function fetchPosts() {
@@ -85,11 +88,27 @@ function fetchPostTags() {
   return fetch(`${apiBaseUrl}/api/post-tags`)
     .then((response) => response.json())
     .then((postTags) => {
-      postTags.forEach((pt) => {
-        if (!postTagMap.has(pt.id)) {
-          postTagMap.set(pt.id, []);
-        }
-        postTagMap.get(pt.id).push(pt.tag_id);
-      });
+      return Promise.all(
+        postTags.map((pt) =>
+          fetch(`${apiBaseUrl}/api/tags/${pt.tag_id}`)
+            .then((response) => response.json())
+            .then((tag) => {
+              pt.tag_name = tag[0].tag_name;
+              if (postTagsMap.has(pt.id)) {
+                postTagsMap.get(pt.id).push(pt);
+              } else {
+                postTagsMap.set(pt.id, [pt]);
+              }
+              return pt;
+            })
+        )
+      );
+    })
+    .then((completedPostTags) => {
+      // postTags.push(...completedPostTags);
+    })
+    .catch((error) => {
+      console.log(`Failed to load post tags: ${error}`);
+      return [];
     });
 }

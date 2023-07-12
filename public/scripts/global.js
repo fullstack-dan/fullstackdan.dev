@@ -130,3 +130,30 @@ export function createBlogPost(post) {
 
   return blogPost;
 }
+
+export function populateTags(postTagsMap, blogPosts) {
+  console.log(postTagsMap);
+  for (let i = 0; i < blogPosts.children.length; i++) {
+    const blogPost = blogPosts.children[i];
+    const blogTags = blogPost.querySelector(".blog-tags");
+    const postId = blogPost.querySelector("h1").dataset.postId;
+
+    const postTagsArr = postTagsMap.get(parseInt(postId));
+
+    for (let j = 0; j < postTagsArr.length; j++) {
+      const tag = document.createElement("a");
+      tag.href = `https://blog.fullstackdan.dev/tags/${postTagsArr[j].tag_id}`;
+      tag.classList.add("blog-tag");
+      tag.classList.add("link");
+      tag.textContent = postTagsArr[j].tag_name;
+
+      if (j < postTagsArr.length - 1) {
+        tag.textContent += ", ";
+      }
+
+      blogTags.appendChild(tag);
+    }
+  }
+
+  console.log("Tags populated");
+}
