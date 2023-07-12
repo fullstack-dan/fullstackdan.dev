@@ -46,6 +46,17 @@ function appendTagToTagList(tagName, tagID, tagList) {
 }
 
 function displayPostsForTag(tagID) {
+  document.querySelector("#blog-posts").dataset.tag = tagID;
+
+  const tagElements = document.querySelectorAll(".tag");
+  tagElements.forEach((tagElement) => {
+    if (parseInt(tagElement.dataset.tagID) === tagID) {
+      tagElement.classList.add("selected");
+    } else {
+      tagElement.classList.remove("selected");
+    }
+  });
+
   const blogPosts = document.querySelector("#blog-posts");
   blogPosts.innerHTML = "";
 

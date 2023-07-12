@@ -42,3 +42,7 @@ main h1:first-child:hover {
   bottom: 0.125rem;
   left: 0.125rem;
 }
+
+.selected {
+  font-family: "Space Mono Bold", Arial, sans-serif;
+}
