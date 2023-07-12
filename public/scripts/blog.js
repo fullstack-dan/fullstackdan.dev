@@ -1,63 +1,15 @@
 const apiBaseUrl =
-  location.hostname === "localhost"
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "http://localhost:3000"
     : "https://fullstackdan-dev.onrender.com";
+
+import { createBlogPost } from "./global.js";
 
 const blogPosts = document.querySelector("#blog-posts");
 
 const postsPerPage = 5;
 let currentPage = 1;
 let allPosts = [];
-
-function createBlogPost(post) {
-  const title = post.title,
-    author = post.author,
-    description = post.description,
-    date = post.created_at.slice(0, 10),
-    id = post.id;
-
-  const blogPost = document.createElement("div");
-  blogPost.classList.add("blog-post");
-
-  const blogInfo = document.createElement("div");
-  blogInfo.classList.add("blog-info");
-  blogPost.appendChild(blogInfo);
-
-  const blogTitle = document.createElement("h1");
-  const blogLink = document.createElement("a");
-  blogLink.href = "https://blog.fullstackdan.dev/posts/" + id;
-  blogLink.textContent = title;
-  blogTitle.appendChild(blogLink);
-  blogInfo.appendChild(blogTitle);
-  blogTitle.dataset.postId = id;
-
-  const blogExtraInfo = document.createElement("div");
-  blogExtraInfo.classList.add("blog-extra-info");
-  blogInfo.appendChild(blogExtraInfo);
-
-  const blogDescription = document.createElement("h2");
-  blogDescription.textContent = description;
-  blogExtraInfo.appendChild(blogDescription);
-
-  const blogAuthor = document.createElement("h2");
-  blogAuthor.textContent = author;
-  blogExtraInfo.appendChild(blogAuthor);
-
-  const blogDate = document.createElement("h2");
-  blogDate.textContent = date;
-  blogExtraInfo.appendChild(blogDate);
-
-  const blogNumber = document.createElement("div");
-  blogNumber.classList.add("blog-number");
-  blogNumber.textContent = `[${id.toString().padStart(2, "0")}]`;
-  blogPost.appendChild(blogNumber);
-
-  if (blogPosts.children.length > 0) {
-    blogPost.style.borderTop = "none";
-  }
-
-  return blogPost;
-}
 
 function loadPosts(page) {
   if (allPosts.length === 0) {

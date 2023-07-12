@@ -8,7 +8,7 @@ var corsOptions = {
   origin: function (origin, callback) {
     var allowedOrigins = [
       "http://localhost:3000",
-      "http://localhost:5000",
+      "http://127.0.0.1:5500",
       "http://localhost",
       "https://fullstackdan.dev",
       "https://blog.fullstackdan.dev",
@@ -98,6 +98,14 @@ app.get("/api/tags/:id", (req, res) => {
       res.json(results);
     }
   );
+});
+
+app.get("/tags", (req, res) => {
+  res.render("tags", { tagId: 0 });
+});
+
+app.get("/tags/:id", (req, res) => {
+  res.render("tags", { tagId: req.params["id"] });
 });
 
 app.use(express.static("public"));

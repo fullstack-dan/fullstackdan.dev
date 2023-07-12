@@ -6,25 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="/styles/blog.css" />
+    <link rel="stylesheet" href="/styles/tags.css" />
     <link rel="stylesheet" href="/styles/media.css" />
     <link rel="icon" href="/resources/icons/DN_logo.png" />
     <script type="module" src="/scripts/global.js" defer></script>
-    <script type="module" src="/scripts/blog.js" defer></script>
+    <script type="module" src="/scripts/tags.js" defer></script>
     <title>FLSTKDN_</title>
   </head>
 
   <body>
     <nav></nav>
     <main>
-      <h1>blog posts</h1>
-      <div>
-        <div id="blog-posts"></div>
-        <div id="page-btns">
-          <button class="pagination" id="prev-page">Previous</button>
-          <button class="pagination" id="next-page">Next</button>
-        </div>
-      </div>
+      <h1>tags</h1>
+      <div id="tag-list"></div>
+      <div id="blog-posts" data-tag="<%= tagId %>"></div>
     </main>
     <footer></footer>
   </body>
