@@ -1,0 +1,122 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+main h1:first-child {
+  font-size: 3rem;
+  font-family: "Space Mono Bold", Arial, sans-serif;
+  padding: 1rem;
+  padding-bottom: 1rem;
+  position: relative;
+  bottom: 0;
+  left: 0;
+
+  text-align: center;
+}
+
+main h1:first-child:hover {
+  bottom: 0.125rem;
+  left: 0.125rem;
+}
+
+#add-post-form {
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+#add-post-form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%; /* Make sure the divs take up the full width of the form */
+}
+
+/* Make sure the label and input elements take up the full width of their parent div */
+#add-post-form div label,
+#add-post-form div input {
+  width: 20%;
+}
+
+#add-post-form div input {
+  background-color: #061931;
+  border-color: #ff7746;
+  color: #ff7746;
+  border-radius: 5px;
+  border-width: 0.125rem;
+  border-style: solid;
+
+  height: 2rem;
+}
+
+#add-post-form div textarea {
+  background-color: #061931;
+  border-color: #ff7746;
+  color: #ff7746;
+  border-radius: 5px;
+  border-width: 0.125rem;
+
+  width: 100%;
+  height: 10rem;
+}
+
+#add-post-form div select {
+  background-color: #061931;
+  border-color: #ff7746;
+  color: #ff7746;
+  border-radius: 5px;
+  border-width: 0.125rem;
+  border-style: solid;
+
+  width: 20%;
+  height: 2rem;
+}
+
+#add-post-form button[type="submit"] {
+  border-style: solid;
+  background-color: #09203f;
+  color: #ff7746;
+  border-radius: 5px;
+  border-width: 0.125rem;
+  border-color: #ff7746;
+  width: 10rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-family: "Space Mono Bold", Arial, sans-serif;
+
+  align-self: center;
+}
+
+#add-post-form button[type="submit"]:hover {
+  background-color: #061931;
+  color: #ff7746;
+}
+
+#add-post-form button[type="submit"]:active {
+  background-color: #041325;
+  color: #ff7746;
+}
+
+@media only screen and (max-width: 768px) {
+  #add-post-form div {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #add-post-form div label,
+  #add-post-form div input {
+    align-items: center;
+    justify-self: center;
+    width: 100%;
+  }
+
+  #add-post-form div select {
+    width: 100%;
+  }
+}

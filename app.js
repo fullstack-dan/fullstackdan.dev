@@ -24,6 +24,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.render("blog");
@@ -47,6 +48,73 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to the database!");
+});
+
+app.post("/api/posts", (req, res) => {
+  const { title, description, content, tags } = req.body;
+
+  connection.query(
+    `INSERT INTO posts (title, description, body, author)
+     VALUES (?, ?, ?, ?)`,
+    [title, description, content, "daniel a."],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({ status: "error" });
+        return;
+      }
+
+      const postId = results.insertId;
+
+      if (tags === "new") {
+        const newTag = req.body.newTag;
+
+        connection.query(
+          `INSERT INTO tags (tag_name) VALUES (?)`,
+          [newTag],
+          (err, tagResults) => {
+            if (err) {
+              console.log(err);
+              res.status(500).json({ status: "error" });
+              return;
+            }
+
+            const tagId = tagResults.insertId;
+
+            connection.query(
+              `INSERT INTO post_tags (id, tag_id) VALUES (?, ?)`,
+              [postId, tagId],
+              (err) => {
+                if (err) {
+                  console.log(err);
+                  res.status(500).json({ status: "error" });
+                  return;
+                }
+
+                res.json({ status: "success" });
+              }
+            );
+          }
+        );
+      } else {
+        const tagId = tags;
+
+        connection.query(
+          `INSERT INTO post_tags (id, tag_id) VALUES (?, ?)`,
+          [postId, tagId],
+          (err) => {
+            if (err) {
+              console.log(err);
+              res.status(500).json({ status: "error" });
+              return;
+            }
+
+            res.json({ status: "success" });
+          }
+        );
+      }
+    }
+  );
 });
 
 app.get("/api/posts", (req, res) => {
@@ -106,6 +174,10 @@ app.get("/tags", (req, res) => {
 
 app.get("/tags/:id", (req, res) => {
   res.render("tags", { tagId: req.params["id"] });
+});
+
+app.get("/add-post", (req, res) => {
+  res.render("add-post");
 });
 
 app.use(express.static("public"));

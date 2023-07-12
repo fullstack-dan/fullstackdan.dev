@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/add-post.css" />
+    <link rel="stylesheet" href="/styles/media.css" />
+    <link rel="icon" href="/resources/icons/DN_logo.png" />
+    <script type="module" src="/scripts/global.js" defer></script>
+    <script type="module" src="/scripts/add-post.js" defer></script>
+    <title>FLSTKDN_</title>
+  </head>
+
+  <body>
+    <nav></nav>
+    <main>
+      <h1>add post</h1>
+      <form id="add-post-form">
+        <div>
+          <label for="title">title</label>
+          <input type="text" name="title" id="title" maxlength="25" />
+        </div>
+        <div>
+          <label for="description">description</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            maxlength="25"
+          />
+        </div>
+        <div>
+          <label for="content">content</label>
+          <textarea name="content" id="content"></textarea>
+        </div>
+        <div>
+          <label for="tags">tags</label>
+          <select name="tags" id="tags"></select>
+          <input type="text" name="newTag" id="newTag" style="display: none" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <footer></footer>
+  </body>
+</html>
