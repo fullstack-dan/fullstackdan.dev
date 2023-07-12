@@ -64,14 +64,38 @@ app.get("/posts/:id", (req, res) => {
     (error, results) => {
       if (error) throw error;
       if (results.length === 0) {
-        // No post found with this ID (you might want to send a 404 response)
         res.status(404).send("Post not found");
         return;
       }
 
-      // Render the 'post' view and pass it the post data
       results[0].body = results[0].body.replace(/\n/g, "<br>");
       res.render("post", { post: results[0] });
+    }
+  );
+});
+
+app.get("/api/post-tags", (req, res) => {
+  connection.query("SELECT * FROM post_tags", (error, results) => {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+
+app.get("/api/tags", (req, res) => {
+  connection.query("SELECT * FROM tags", (error, results) => {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+
+app.get("/api/tags/:id", (req, res) => {
+  const id = req.params.id;
+  connection.query(
+    "SELECT * FROM tags WHERE tag_id = ?",
+    [id],
+    (error, results) => {
+      if (error) throw error;
+      res.json(results);
     }
   );
 });

@@ -203,3 +203,17 @@ footer {
   padding: 1rem;
   padding-top: 0;
 }
+
+.blog-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* .blog-tag {
+  padding: 0.25rem;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-width: 0.125rem;
+} */
