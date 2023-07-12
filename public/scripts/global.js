@@ -132,7 +132,6 @@ export function createBlogPost(post) {
 }
 
 export function populateTags(postTagsMap, blogPosts) {
-  console.log(postTagsMap);
   for (let i = 0; i < blogPosts.children.length; i++) {
     const blogPost = blogPosts.children[i];
     const blogTags = blogPost.querySelector(".blog-tags");
@@ -154,6 +153,4 @@ export function populateTags(postTagsMap, blogPosts) {
       blogTags.appendChild(tag);
     }
   }
-
-  console.log("Tags populated");
 }

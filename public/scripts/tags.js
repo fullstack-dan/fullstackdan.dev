@@ -50,7 +50,7 @@ function displayPostsForTag(tagID) {
   blogPosts.innerHTML = "";
 
   if (tagID === 0) {
-    const reversePosts = posts.reverse();
+    const reversePosts = posts.slice().reverse();
     reversePosts.forEach((post) => blogPosts.appendChild(createBlogPost(post)));
     populateTags(postTagsMap, blogPosts);
     return;
@@ -70,6 +70,7 @@ function displayPostsForTag(tagID) {
   }
 
   taggedPosts
+    .sort((a, b) => a.id - b.id)
     .reverse()
     .forEach((post) => blogPosts.appendChild(createBlogPost(post)));
 
