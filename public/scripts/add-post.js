@@ -57,10 +57,35 @@ function createForm() {
 
   document.getElementById("tags").addEventListener("change", function () {
     const newTagInput = document.getElementById("newTag");
+    const titleInput = document.getElementById("title");
+    const descriptionInput = document.getElementById("description");
     if (this.value === "new") {
       newTagInput.style.display = "block";
     } else {
       newTagInput.style.display = "none";
+    }
+
+    if (this.options[this.selectedIndex].text === "reflection") {
+      titleInput.value = "weekly reflection";
+      titleInput.readOnly = true;
+
+      const now = new Date();
+      const lastSunday = new Date(
+        now.setDate(now.getDate() - now.getDay() - 7)
+      );
+      descriptionInput.value =
+        "week of " + lastSunday.toISOString().split("T")[0];
+      descriptionInput.readOnly = true;
+    } else if (this.options[this.selectedIndex].text === "goals") {
+      titleInput.value = "weekly goals";
+      titleInput.readOnly = true;
+      descriptionInput.readOnly = false;
+      descriptionInput.value = "";
+    } else {
+      titleInput.readOnly = false;
+      titleInput.value = "";
+      descriptionInput.readOnly = false;
+      descriptionInput.value = "";
     }
   });
 
