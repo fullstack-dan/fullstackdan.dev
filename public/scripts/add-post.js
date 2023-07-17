@@ -28,14 +28,6 @@ window.onload = () => {
     createForm();
   }
   populateTagSelect();
-  document.getElementById("tags").addEventListener("change", function () {
-    const newTagInput = document.getElementById("newTag");
-    if (this.value === "new") {
-      newTagInput.style.display = "block";
-    } else {
-      newTagInput.style.display = "none";
-    }
-  });
 
   document
     .getElementById("add-post-form")
@@ -116,6 +108,15 @@ function createForm() {
   form.appendChild(submitButton);
 
   document.querySelector("main").appendChild(form);
+
+  document.getElementById("tags").addEventListener("change", function () {
+    const newTagInput = document.getElementById("newTag");
+    if (this.value === "new") {
+      newTagInput.style.display = "block";
+    } else {
+      newTagInput.style.display = "none";
+    }
+  });
 }
 
 function createFormField(id, labelText, type, maxLength) {
