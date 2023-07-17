@@ -3,6 +3,15 @@ const apiBaseUrl =
     ? "http://localhost:3000"
     : "https://fullstackdan-dev.onrender.com";
 
+async function sha256(input) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(input);
+  const hash = await window.crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hash))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
   const changelogContainer = document.getElementById("changelog");
 
@@ -78,6 +87,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
 });
 
+const password =
+  "b94e689b09eda0647be7d676336d047e3e54ab49a16a30241b614382514dd8ce";
+
 window.addEventListener("DOMContentLoaded", (event) => {
   const addChangelogBtn = document.getElementById("add-changelog-btn");
   const addChangelogForm = document.getElementById("add-changelog-form");
@@ -85,8 +97,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
   addChangelogForm.style.display = "none";
 
   addChangelogBtn.addEventListener("click", () => {
-    const isFormDisplayed = addChangelogForm.style.display === "flex";
-    addChangelogForm.style.display = isFormDisplayed ? "none" : "flex";
+    if (
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1"
+    ) {
+      let userInput = prompt("Enter password:");
+      sha256(userInput).then((hashedInput) => {
+        if (hashedInput !== password) {
+          alert("Incorrect password!");
+        } else {
+          const isFormDisplayed = addChangelogForm.style.display === "flex";
+          addChangelogForm.style.display = isFormDisplayed ? "none" : "flex";
+        }
+      });
+    } else {
+      const isFormDisplayed = addChangelogForm.style.display === "flex";
+      addChangelogForm.style.display = isFormDisplayed ? "none" : "flex";
+    }
   });
 });
 
