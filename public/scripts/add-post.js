@@ -27,7 +27,6 @@ window.onload = () => {
   } else {
     createForm();
   }
-  populateTagSelect();
 };
 
 function createForm() {
@@ -117,6 +116,7 @@ function createForm() {
           alert("Error adding post!");
         });
     });
+  populateTagSelect();
 }
 
 function createFormField(id, labelText, type, maxLength) {
