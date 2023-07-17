@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/changelog.css" />
+    <link rel="stylesheet" href="/styles/media.css" />
+    <link rel="icon" href="/resources/icons/DN_logo.png" />
+    <script type="module" src="/scripts/global.js" defer></script>
+    <script type="module" src="/scripts/changelog.js" defer></script>
+    <title>FLSTKDN_</title>
+  </head>
+
+  <body>
+    <nav></nav>
+    <main>
+      <h1>Changelog</h1>
+      <div id="changelog">
+        <div class="changelog-entry">
+          <h1>[upcoming]</h1>
+          <div class="fix-section">
+            <ul class="list">
+              <li>- portfolio page</li>
+              <li>- about / resume page</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="link" id="add-changelog-btn">add entry</div>
+      <form id="add-changelog-form">
+        <div>
+          <label for="version">Version:</label>
+          <input type="text" id="version" name="version" required />
+        </div>
+
+        <div>
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+
+        <div class="fix-section">
+          <label for="fixed">Fixed:</label>
+          <textarea id="fixed" name="fixed"></textarea>
+        </div>
+
+        <div class="add-section">
+          <label for="added">Added:</label>
+          <textarea id="added" name="added"></textarea>
+        </div>
+
+        <div class="remove-section">
+          <label for="removed">Removed:</label>
+          <textarea id="removed" name="removed"></textarea>
+        </div>
+
+        <div class="change-section">
+          <label for="changed">Changed:</label>
+          <textarea id="changed" name="changed"></textarea>
+        </div>
+
+        <button type="submit">Add Entry</button>
+      </form>
+    </main>
+    <footer></footer>
+  </body>
+</html>

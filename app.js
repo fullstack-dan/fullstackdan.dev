@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
 app.set("view engine", "ejs");
 
@@ -178,6 +180,37 @@ app.get("/tags/:id", (req, res) => {
 
 app.get("/add-post", (req, res) => {
   res.render("add-post");
+});
+
+app.post("/addChangelog", (req, res) => {
+  const change = req.body.change;
+  const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
+
+  fs.appendFile(changeLogPath, `${change}\n`, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(500).send("An error occurred while writing to the file.");
+    } else {
+      res.status(200).send("Change added successfully!");
+    }
+  });
+});
+
+app.get("/getChangelog", (req, res) => {
+  const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
+
+  fs.readFile(changeLogPath, "utf8", function (err, data) {
+    if (err) {
+      console.log(err);
+      res.status(500).send("An error occurred while reading the file.");
+    } else {
+      res.status(200).send(data);
+    }
+  });
+});
+
+app.get("/changelog", (req, res) => {
+  res.render("changelog");
 });
 
 app.use(express.static("public"));

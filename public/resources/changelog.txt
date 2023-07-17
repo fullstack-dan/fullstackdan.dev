@@ -1,0 +1,16 @@
+[v1.0.0] - 2023-07-16
+Fixed:
+- 
+
+Added:
+- changelog
+- changelog entry form
+- post adding form
+
+Removed:
+- 
+
+Changed:
+- 
+
+
