@@ -28,6 +28,34 @@ window.onload = () => {
     createForm();
   }
   populateTagSelect();
+};
+
+function createForm() {
+  let form = document.createElement("form");
+  form.setAttribute("id", "add-post-form");
+
+  let titleDiv = createFormField("title", "Title", "text", 25);
+  let descriptionDiv = createFormField(
+    "description",
+    "Description",
+    "text",
+    25
+  );
+  let contentDiv = createFormField("content", "Content", "textarea");
+  let tagDiv = createTagField();
+
+  let submitButton = document.createElement("button");
+  submitButton.setAttribute("type", "submit");
+  submitButton.textContent = "Submit";
+
+  form.appendChild(titleDiv);
+  form.appendChild(descriptionDiv);
+  form.appendChild(contentDiv);
+  form.appendChild(tagDiv);
+  form.appendChild(submitButton);
+
+  document.querySelector("main").appendChild(form);
+
   document.getElementById("tags").addEventListener("change", function () {
     const newTagInput = document.getElementById("newTag");
     if (this.value === "new") {
@@ -89,33 +117,6 @@ window.onload = () => {
           alert("Error adding post!");
         });
     });
-};
-
-function createForm() {
-  let form = document.createElement("form");
-  form.setAttribute("id", "add-post-form");
-
-  let titleDiv = createFormField("title", "Title", "text", 25);
-  let descriptionDiv = createFormField(
-    "description",
-    "Description",
-    "text",
-    25
-  );
-  let contentDiv = createFormField("content", "Content", "textarea");
-  let tagDiv = createTagField();
-
-  let submitButton = document.createElement("button");
-  submitButton.setAttribute("type", "submit");
-  submitButton.textContent = "Submit";
-
-  form.appendChild(titleDiv);
-  form.appendChild(descriptionDiv);
-  form.appendChild(contentDiv);
-  form.appendChild(tagDiv);
-  form.appendChild(submitButton);
-
-  document.querySelector("main").appendChild(form);
 }
 
 function createFormField(id, labelText, type, maxLength) {
