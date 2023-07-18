@@ -15,7 +15,7 @@ async function sha256(input) {
 window.addEventListener("DOMContentLoaded", (event) => {
   const changelogContainer = document.getElementById("changelog");
 
-  fetch(`${apiBaseUrl}/getChangelog`)
+  fetch(`${apiBaseUrl}/api/get-changelog`)
     .then((response) => response.text())
     .then((data) => {
       const entries = data.trim().split("\n\n\n");
@@ -149,7 +149,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         .map((i) => `- ${i}`)
         .join("\n")}\n\n`;
 
-    fetch(`${apiBaseUrl}/addChangelog`, {
+    fetch(`${apiBaseUrl}/api/add-changelog`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

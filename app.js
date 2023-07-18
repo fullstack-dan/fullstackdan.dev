@@ -182,7 +182,7 @@ app.get("/add-post", (req, res) => {
   res.render("add-post");
 });
 
-app.post("/addChangelog", (req, res) => {
+app.post("/api/add-hangelog", (req, res) => {
   const change = req.body.change;
   const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
 
@@ -196,7 +196,7 @@ app.post("/addChangelog", (req, res) => {
   });
 });
 
-app.get("/getChangelog", (req, res) => {
+app.get("/api/get-changelog", (req, res) => {
   const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
 
   fs.readFile(changeLogPath, "utf8", function (err, data) {
