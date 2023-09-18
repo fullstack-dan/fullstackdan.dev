@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const fs = require("fs");
 const path = require("path");
+const pool = require("./db");
 require("dotenv").config();
 app.set("view engine", "ejs");
 
@@ -38,24 +39,18 @@ app.get("/api", (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-const mysql = require("mysql2");
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: "flstkdn_blogs",
-});
-
-connection.connect((err) => {
-  if (err) throw err;
+pool.query("SELECT 1", (error, results) => {
+  if (error) {
+    console.error("Error connecting to the database:", error);
+    return;
+  }
   console.log("Connected to the database!");
 });
 
 app.post("/api/posts", (req, res) => {
   const { title, description, content, tags } = req.body;
 
-  connection.query(
+  pool.query(
     `INSERT INTO posts (title, description, body, author)
      VALUES (?, ?, ?, ?)`,
     [title, description, content, "daniel a."],
@@ -71,7 +66,7 @@ app.post("/api/posts", (req, res) => {
       if (tags === "new") {
         const newTag = req.body.newTag;
 
-        connection.query(
+        pool.query(
           `INSERT INTO tags (tag_name) VALUES (?)`,
           [newTag],
           (err, tagResults) => {
@@ -83,7 +78,7 @@ app.post("/api/posts", (req, res) => {
 
             const tagId = tagResults.insertId;
 
-            connection.query(
+            pool.query(
               `INSERT INTO post_tags (id, tag_id) VALUES (?, ?)`,
               [postId, tagId],
               (err) => {
@@ -101,7 +96,7 @@ app.post("/api/posts", (req, res) => {
       } else {
         const tagId = tags;
 
-        connection.query(
+        pool.query(
           `INSERT INTO post_tags (id, tag_id) VALUES (?, ?)`,
           [postId, tagId],
           (err) => {
@@ -120,15 +115,19 @@ app.post("/api/posts", (req, res) => {
 });
 
 app.get("/api/posts", (req, res) => {
-  connection.query("SELECT * FROM posts", (error, results) => {
-    if (error) throw error;
+  pool.query("SELECT * FROM posts", (error, results) => {
+    if (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+      return;
+    }
     res.json(results);
   });
 });
 
 app.get("/posts/:id", (req, res) => {
   const id = req.params.id;
-  connection.query(
+  pool.query(
     "SELECT *, DATE_FORMAT(created_at, '%Y-%m-%d') AS formatted_date FROM posts WHERE id = ?",
     [id],
     (error, results) => {
@@ -145,14 +144,14 @@ app.get("/posts/:id", (req, res) => {
 });
 
 app.get("/api/post-tags", (req, res) => {
-  connection.query("SELECT * FROM post_tags", (error, results) => {
+  pool.query("SELECT * FROM post_tags", (error, results) => {
     if (error) throw error;
     res.json(results);
   });
 });
 
 app.get("/api/tags", (req, res) => {
-  connection.query("SELECT * FROM tags", (error, results) => {
+  pool.query("SELECT * FROM tags", (error, results) => {
     if (error) throw error;
     res.json(results);
   });
@@ -160,14 +159,10 @@ app.get("/api/tags", (req, res) => {
 
 app.get("/api/tags/:id", (req, res) => {
   const id = req.params.id;
-  connection.query(
-    "SELECT * FROM tags WHERE tag_id = ?",
-    [id],
-    (error, results) => {
-      if (error) throw error;
-      res.json(results);
-    }
-  );
+  pool.query("SELECT * FROM tags WHERE tag_id = ?", [id], (error, results) => {
+    if (error) throw error;
+    res.json(results);
+  });
 });
 
 app.get("/tags", (req, res) => {
