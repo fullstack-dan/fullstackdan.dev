@@ -177,7 +177,7 @@ app.get("/add-post", (req, res) => {
   res.render("add-post");
 });
 
-app.post("/api/add-hangelog", (req, res) => {
+app.post("/api/add-changelog", (req, res) => {
   const change = req.body.change;
   const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
 
