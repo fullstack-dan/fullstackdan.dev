@@ -11,7 +11,7 @@ fetch(`${apiBaseUrl}/blog`)
 const main = document.querySelector("main");
 window.onload = function () {
   const postId = parseInt(localStorage.getItem("postId"));
-  if (postId !== null) {
+  if (isNaN(postId)) {
     fetch(`${apiBaseUrl}/blog/${postId}`)
       .then((res) => {
         return res.json();
@@ -22,6 +22,9 @@ window.onload = function () {
         main.innerHTML = postHTML;
       })
       .catch((error) => console.error(error));
+  } else {
+    // Redirect to home page if postId is not present in localStorage
+    window.location.href = "/";
   }
 };
 

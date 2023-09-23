@@ -1,13 +1,17 @@
+// Set the base URL for the API based on the current hostname
 const apiBaseUrl =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "http://localhost:3000"
     : "https://fullstackdan-dev.onrender.com";
 
+// Import functions from global.js
 import { createBlogPost, populateTags } from "./global.js";
 
+// Initialize posts array and postTagsMap Map object
 let posts = [];
 let postTagsMap = new Map();
 
+// Load tags, posts, and post tags from the API and display posts for the selected tag
 window.onload = function () {
   Promise.all([fetchTagsAndPopulate(), fetchPosts(), fetchPostTags()])
     .then(() =>
@@ -18,14 +22,20 @@ window.onload = function () {
     });
 };
 
+/**
+ * Fetches all tags from the API and populates the tag list in the DOM.
+ * @returns {Promise} A Promise that resolves when the tags have been fetched and the tag list has been populated.
+ */
 function fetchTagsAndPopulate() {
   return fetch(`${apiBaseUrl}/api/tags`)
     .then((response) => response.json())
     .then((tags) => {
       const tagList = document.querySelector("#tag-list");
 
+      // Append 'all' tag to tag list
       appendTagToTagList("all", 0, tagList);
 
+      // Append each tag to tag list
       tags.forEach((tag) => {
         const divider = document.createElement("div");
         divider.textContent = "|";
@@ -36,6 +46,12 @@ function fetchTagsAndPopulate() {
     });
 }
 
+/**
+ * Appends a tag to the tag list in the DOM.
+ * @param {string} tagName - The name of the tag.
+ * @param {number} tagID - The ID of the tag.
+ * @param {HTMLElement} tagList - The tag list element in the DOM.
+ */
 function appendTagToTagList(tagName, tagID, tagList) {
   const tagElement = document.createElement("div");
   tagElement.classList.add("tag");
@@ -45,9 +61,15 @@ function appendTagToTagList(tagName, tagID, tagList) {
   tagList.appendChild(tagElement);
 }
 
+/**
+ * Displays the posts for the specified tag in the DOM.
+ * @param {number} tagID - The ID of the tag to display posts for.
+ */
 function displayPostsForTag(tagID) {
+  // Set the selected tag in the DOM
   document.querySelector("#blog-posts").dataset.tag = tagID;
 
+  // Highlight the selected tag in the tag list
   const tagElements = document.querySelectorAll(".tag");
   tagElements.forEach((tagElement) => {
     if (parseInt(tagElement.dataset.tagID) === tagID) {
@@ -57,9 +79,11 @@ function displayPostsForTag(tagID) {
     }
   });
 
+  // Clear out old posts
   const blogPosts = document.querySelector("#blog-posts");
   blogPosts.innerHTML = "";
 
+  // Display all posts if 'all' tag is selected
   if (tagID === 0) {
     const reversePosts = posts.slice().reverse();
     reversePosts.forEach((post) => blogPosts.appendChild(createBlogPost(post)));
@@ -67,6 +91,7 @@ function displayPostsForTag(tagID) {
     return;
   }
 
+  // Filter posts by tag and display them
   var taggedPosts = [];
 
   for (let postId of postTagsMap.keys()) {
@@ -88,6 +113,10 @@ function displayPostsForTag(tagID) {
   populateTags(postTagsMap, blogPosts);
 }
 
+/**
+ * Fetches all posts from the API and stores them in the posts array.
+ * @returns {Promise} A Promise that resolves when the posts have been fetched and stored in the posts array.
+ */
 function fetchPosts() {
   return fetch(`${apiBaseUrl}/api/posts`)
     .then((response) => response.json())
@@ -96,6 +125,10 @@ function fetchPosts() {
     });
 }
 
+/**
+ * Fetches all post tags from the API, fetches the associated tags for each post tag, and stores the results in the postTagsMap Map object.
+ * @returns {Promise} A Promise that resolves when the post tags and associated tags have been fetched and stored in the postTagsMap Map object.
+ */
 function fetchPostTags() {
   return fetch(`${apiBaseUrl}/api/post-tags`)
     .then((response) => response.json())
@@ -117,7 +150,7 @@ function fetchPostTags() {
       );
     })
     .then((completedPostTags) => {
-      // postTags.push(...completedPostTags);
+      // All the code that depends on the completed postTagsMap goes here
     })
     .catch((error) => {
       console.log(`Failed to load post tags: ${error}`);
