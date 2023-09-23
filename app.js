@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const app = express();
 const fs = require("fs");
 const path = require("path");
 const pool = require("./db");
 require("dotenv").config();
+
+const port = process.env.PORT || 3000;
+const app = express();
 app.set("view engine", "ejs");
 
 var corsOptions = {
@@ -29,16 +31,23 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());
 
+/**
+ * Redirects all requests to the root domain to the blog page.
+ */
 app.get("/", (req, res) => {
   res.render("blog");
 });
 
+/**
+ * This is a test endpoint to check if the server is running.
+ */
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-const port = process.env.PORT || 3000;
-
+/**
+ * This is a test endpoint to check if the server is connected to the database.
+ */
 pool.query("SELECT 1", (error, results) => {
   if (error) {
     console.error("Error connecting to the database:", error);
@@ -47,6 +56,9 @@ pool.query("SELECT 1", (error, results) => {
   console.log("Connected to the database!");
 });
 
+/**
+ * This endpoint is used to add a new post to the database.
+ */
 app.post("/api/posts", (req, res) => {
   const { title, description, content, tags } = req.body;
 
@@ -114,6 +126,9 @@ app.post("/api/posts", (req, res) => {
   );
 });
 
+/**
+ * This endpoint gets all posts from the database.
+ */
 app.get("/api/posts", (req, res) => {
   pool.query("SELECT * FROM posts", (error, results) => {
     if (error) {
@@ -125,6 +140,9 @@ app.get("/api/posts", (req, res) => {
   });
 });
 
+/**
+ * This endpoint gets posts from the database based on the tag id.
+ */
 app.get("/posts/:id", (req, res) => {
   const id = req.params.id;
   pool.query(
@@ -143,6 +161,9 @@ app.get("/posts/:id", (req, res) => {
   );
 });
 
+/**
+ * This endpoint gets a list of all post-tag relationships from the database.
+ */
 app.get("/api/post-tags", (req, res) => {
   pool.query("SELECT * FROM post_tags", (error, results) => {
     if (error) throw error;
@@ -150,6 +171,9 @@ app.get("/api/post-tags", (req, res) => {
   });
 });
 
+/**
+ * This endpoint gets a list of all tags from the database.
+ */
 app.get("/api/tags", (req, res) => {
   pool.query("SELECT * FROM tags", (error, results) => {
     if (error) throw error;
@@ -157,6 +181,9 @@ app.get("/api/tags", (req, res) => {
   });
 });
 
+/**
+ * This endpoint gets a specific tag from the database based on the tag id.
+ */
 app.get("/api/tags/:id", (req, res) => {
   const id = req.params.id;
   pool.query("SELECT * FROM tags WHERE tag_id = ?", [id], (error, results) => {
@@ -165,18 +192,30 @@ app.get("/api/tags/:id", (req, res) => {
   });
 });
 
+/**
+ * This endpoint redirects to the tags page.
+ */
 app.get("/tags", (req, res) => {
   res.render("tags", { tagId: 0 });
 });
 
+/**
+ * This endpoint redirects to the tags page with a specific tag id.
+ */
 app.get("/tags/:id", (req, res) => {
   res.render("tags", { tagId: req.params["id"] });
 });
 
+/**
+ * This endpoint redirects to the add post page.
+ */
 app.get("/add-post", (req, res) => {
   res.render("add-post");
 });
 
+/**
+ * This endpoint writes a new change to the changelog file.
+ */
 app.post("/api/add-changelog", (req, res) => {
   const change = req.body.change;
   const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
@@ -191,6 +230,9 @@ app.post("/api/add-changelog", (req, res) => {
   });
 });
 
+/**
+ * This endpoint gets the changelog file.
+ */
 app.get("/api/get-changelog", (req, res) => {
   const changeLogPath = path.join(__dirname, "/public/resources/changelog.txt");
 
@@ -204,10 +246,16 @@ app.get("/api/get-changelog", (req, res) => {
   });
 });
 
+/**
+ * This endpoint redirects to the changelog page.
+ */
 app.get("/changelog", (req, res) => {
   res.render("changelog");
 });
 
+/**
+ * Starts the app.
+ */
 app.use(express.static("public"));
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -1,6 +1,6 @@
-[v1.0.0] - 2023-07-16
+[v1.0.1] - 2023-09-18
 Fixed:
-- 
+- Implemented connection pooling to prevent database connection errors
 
 Added:
 - changelog
