@@ -12,7 +12,7 @@ let content = `
     <h1 class="footer-info">Atlanta, GA</h1>
   </div>
   <div>
-    <h1 class="footer-info">+1 (470) 491-3820</h1>
+    <h1 class="footer-info">+1 (470) 461-3820</h1>
   </div>
   <div>Copyright 2023 Daniel Aoulou</div>
   <div>
